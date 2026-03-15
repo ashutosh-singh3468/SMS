@@ -23,6 +23,7 @@ export async function listDoctors({ search = '', department = '' }) {
   return rows;
 }
 
+
 export async function updateDoctorSlots(doctorId, availableSlots) {
   if (db.mode === 'memory') {
     const index = db.memory.doctors.findIndex((doctor) => doctor.id === doctorId);
@@ -45,3 +46,4 @@ export async function updateDoctorSlots(doctorId, availableSlots) {
   const { rows } = await pool.query(query, [availableSlots, doctorId]);
   return rows[0] || null;
 }
+ main

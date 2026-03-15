@@ -1,3 +1,4 @@
+
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
@@ -412,4 +413,11 @@ const server = http.createServer(async (req, res) => {
 server.listen(port, () => {
   console.log(`Care Pulse server running at http://localhost:${port}`);
   console.log('Demo accounts: doctor1@carepulse.com / doctor123, admin@carepulse.com / admin123');
+
+import app from './app.js';
+import { env } from './config/env.js';
+
+app.listen(env.port, () => {
+  console.info(`Care Pulse backend running on http://localhost:${env.port}`);
+ main
 });

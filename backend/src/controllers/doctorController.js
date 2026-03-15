@@ -1,10 +1,15 @@
+
 import { listDoctors, updateDoctorSlots } from '../models/doctorModel.js';
+
+import { listDoctors } from '../models/doctorModel.js';
+ main
 
 export async function getDoctors(req, res) {
   const { search = '', department = '' } = req.query;
   const doctors = await listDoctors({ search, department });
   return res.status(200).json({ doctors });
 }
+
 
 export async function updateSlots(req, res) {
   const { doctorId, availableSlots } = req.body;
@@ -20,3 +25,5 @@ export async function updateSlots(req, res) {
 
   return res.status(200).json({ message: 'Availability updated', doctor });
 }
+
+ main

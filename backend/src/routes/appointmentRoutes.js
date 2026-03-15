@@ -2,6 +2,7 @@ import { Router } from 'express';
 import {
   bookAppointment,
   cancelMyAppointment,
+
   getAdminOverview,
   getDoctorAppointments,
   getMyAppointments,
@@ -11,9 +12,15 @@ import {
 } from '../controllers/appointmentController.js';
 import { authenticate, authorize } from '../middleware/authMiddleware.js';
 
+  getMyAppointments,
+} from '../controllers/appointmentController.js';
+import { authenticate } from '../middleware/authMiddleware.js';
+main
+
 const router = Router();
 
 router.use(authenticate);
+
 router.get('/mine', authorize('Patient'), getMyAppointments);
 router.post('/', authorize('Patient'), bookAppointment);
 router.patch('/:id/cancel', authorize('Patient'), cancelMyAppointment);
@@ -22,5 +29,10 @@ router.patch('/:id/status', authorize('Doctor', 'Admin'), updateDoctorAppointmen
 router.get('/notifications', authorize('Patient'), getNotifications);
 router.get('/admin/overview', authorize('Admin'), getAdminOverview);
 router.get('/profile', getProfile);
+
+router.get('/mine', getMyAppointments);
+router.post('/', bookAppointment);
+router.patch('/:id/cancel', cancelMyAppointment);
+ main
 
 export default router;

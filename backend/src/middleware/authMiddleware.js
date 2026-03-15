@@ -18,6 +18,7 @@ export function authenticate(req, res, next) {
   }
 }
 
+
 export function authorize(...roles) {
   return (req, res, next) => {
     if (!req.user || !roles.includes(req.user.role)) {
@@ -26,3 +27,4 @@ export function authorize(...roles) {
     return next();
   };
 }
+ main

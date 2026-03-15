@@ -1,5 +1,6 @@
 import {
   createAppointment,
+
   listAppointmentsByDoctor,
   listAppointmentsByPatient,
   cancelAppointment,
@@ -7,6 +8,11 @@ import {
   getOverviewStats,
 } from '../models/appointmentModel.js';
 import { findUserById } from '../models/userModel.js';
+
+  listAppointmentsByPatient,
+  cancelAppointment,
+} from '../models/appointmentModel.js';
+ main
 
 export async function bookAppointment(req, res) {
   const { doctorId, appointmentDate, appointmentTime, symptoms } = req.body;
@@ -43,6 +49,7 @@ export async function cancelMyAppointment(req, res) {
 
   return res.status(200).json({ message: 'Appointment cancelled', appointment });
 }
+
 
 export async function getDoctorAppointments(req, res) {
   const doctorId = Number(req.query.doctorId || req.user.sub);
@@ -103,3 +110,5 @@ export async function getProfile(req, res) {
     },
   });
 }
+
+ main

@@ -1,5 +1,6 @@
 import { db, pool } from '../config/db.js';
 
+
 const validStatuses = new Set(['Pending', 'Approved', 'Rejected', 'Cancelled', 'Completed', 'Reschedule Requested']);
 
 export async function createAppointment(payload) {
@@ -10,6 +11,11 @@ export async function createAppointment(payload) {
       createdAt: new Date().toISOString(),
       ...payload,
     };
+
+export async function createAppointment(payload) {
+  if (db.mode === 'memory') {
+    const created = { id: db.memory.appointments.length + 1, status: 'Pending', ...payload };
+ main
     db.memory.appointments.push(created);
     return created;
   }
@@ -42,6 +48,7 @@ export async function listAppointmentsByPatient(patientId) {
   return rows;
 }
 
+
 export async function listAppointmentsByDoctor(doctorId) {
   if (db.mode === 'memory') {
     return db.memory.appointments
@@ -61,6 +68,7 @@ export async function listAppointmentsByDoctor(doctorId) {
   return rows;
 }
 
+ main
 export async function cancelAppointment(patientId, appointmentId) {
   if (db.mode === 'memory') {
     const index = db.memory.appointments.findIndex(
@@ -83,6 +91,7 @@ export async function cancelAppointment(patientId, appointmentId) {
   const { rows } = await pool.query(query, [appointmentId, patientId]);
   return rows[0] || null;
 }
+
 
 export async function updateAppointmentStatus(appointmentId, doctorId, status) {
   if (!validStatuses.has(status)) {
@@ -135,3 +144,4 @@ export async function getOverviewStats() {
     pendingAppointments: pending.rows[0].count,
   };
 }
+ main
