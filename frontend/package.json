@@ -1,0 +1,9 @@
+{
+  "name": "care-pulse-static-frontend",
+  "version": "1.0.0",
+  "description": "Static frontend served by Node.js backend",
+  "private": true,
+  "scripts": {
+    "start": "echo 'Run backend server to serve static frontend'"
+  }
+}
