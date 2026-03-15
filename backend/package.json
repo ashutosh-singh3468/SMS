@@ -1,5 +1,15 @@
 {
   "name": "care-pulse-backend",
+
+  "version": "2.0.0",
+  "description": "Zero-dependency Node.js backend for Care Pulse",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+
   "version": "1.0.0",
   "type": "module",
   "main": "src/server.js",
@@ -17,5 +27,6 @@
     "jsonwebtoken": "^9.0.2",
     "nodemailer": "^6.9.14",
     "pg": "^8.12.0"
+ main
   }
 }

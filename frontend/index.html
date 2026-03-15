@@ -1,3 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care Pulse - Professional Hospital Portal</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+
+  <header class="topbar glass">
+    <div class="brand">
+      <h1>Care Pulse</h1>
+      <p>Professional Hospital Booking & Clinical Workflow Portal</p>
+    </div>
+    <div class="top-actions">
+      <button id="themeBtn" class="btn ghost">Theme</button>
+      <button id="logoutBtn" class="btn danger">Logout</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar glass">
+      <div class="profile-mini" id="sidebarProfile">
+        <div class="avatar" id="avatarLabel">CP</div>
+        <div>
+          <strong id="sidebarName">Guest User</strong>
+          <small id="sidebarRole">Not logged in</small>
+        </div>
+      </div>
+      <button class="nav-btn active" data-view="auth">Authentication</button>
+      <button class="nav-btn" data-view="dashboard">Dashboard</button>
+      <button class="nav-btn" data-view="profile">Profile</button>
+      <button class="nav-btn" data-view="patient">Patient Tools</button>
+      <button class="nav-btn" data-view="doctor">Doctor Workspace</button>
+      <button class="nav-btn" data-view="notifications">Notifications</button>
+    </aside>
+
+    <section class="content">
+      <div id="message" class="message"></div>
+
+      <section id="view-auth" class="view active">
+        <div class="panel-title">
+          <h2>Welcome to Care Pulse</h2>
+          <p>Get started as patient, doctor, or admin.</p>
+        </div>
+        <div class="grid two">
+          <form id="registerForm" class="card glass">
+            <h3>Create Account</h3>
+            <input name="name" placeholder="Full Name" required />
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <select name="role">
+              <option>Patient</option>
+              <option>Doctor</option>
+              <option>Admin</option>
+            </select>
+            <div class="grid two">
+              <input name="phone" placeholder="Phone" />
+              <input name="age" type="number" placeholder="Age" />
+            </div>
+            <div class="grid two">
+              <input name="gender" placeholder="Gender" />
+              <input name="bloodGroup" placeholder="Blood Group" />
+            </div>
+            <button class="btn primary" type="submit">Register</button>
+          </form>
+
+          <form id="loginForm" class="card glass">
+            <h3>Sign In</h3>
+            <input name="email" type="email" placeholder="Email" required />
+            <input name="password" type="password" placeholder="Password" required />
+            <button class="btn primary" type="submit">Login</button>
+            <div class="helper-box">
+              <p><strong>Demo Doctor:</strong> doctor1@carepulse.com / doctor123</p>
+              <p><strong>Demo Admin:</strong> admin@carepulse.com / admin123</p>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="view-dashboard" class="view">
+        <div class="panel-title">
+          <h2>Personalized Dashboard</h2>
+          <p id="dashboardSubtitle">Your role-based clinical insights.</p>
+        </div>
+        <div class="grid four" id="dashboardStats"></div>
+      </section>
+
+      <section id="view-profile" class="view">
+        <div class="panel-title">
+          <h2>My Profile</h2>
+          <p>Keep your professional and personal information up to date.</p>
+        </div>
+        <form id="profileForm" class="card glass form-wide">
+          <div class="grid two">
+            <input name="name" placeholder="Full Name" required />
+            <input name="phone" placeholder="Phone" />
+            <input name="age" type="number" placeholder="Age" />
+            <input name="gender" placeholder="Gender" />
+            <input name="bloodGroup" placeholder="Blood Group" />
+            <input name="role" placeholder="Role" readonly />
+          </div>
+          <textarea name="bio" placeholder="Profile bio"></textarea>
+          <button class="btn primary" type="submit">Save Profile</button>
+        </form>
+      </section>
+
+      <section id="view-patient" class="view">
+        <div class="panel-title">
+          <h2>Patient Tools</h2>
+          <p>Search doctors, book appointments, and track your care journey.</p>
+        </div>
+
+        <div class="card glass">
+          <h3>Find Specialist</h3>
+          <div class="grid two">
+            <input id="doctorSearch" placeholder="Search by doctor name or specialization" />
+            <input id="doctorDepartment" placeholder="Department" />
+          </div>
+          <button id="searchDoctorsBtn" class="btn primary">Search Doctors</button>
+          <div id="doctorsList" class="list"></div>
+        </div>
+
+        <form id="bookForm" class="card glass">
+          <h3>Book Appointment</h3>
+          <div class="grid two">
+            <input name="doctorId" placeholder="Doctor ID" required />
+            <input name="appointmentDate" type="date" required />
+            <input name="appointmentTime" type="time" required />
+            <select name="type">
+              <option>New</option>
+              <option>Follow-up</option>
+            </select>
+          </div>
+          <textarea name="symptoms" placeholder="Describe symptoms briefly" required></textarea>
+          <button class="btn primary" type="submit">Confirm Booking</button>
+        </form>
+
+        <div class="card glass">
+          <h3>My Appointments</h3>
+          <div id="myAppointments" class="list"></div>
+        </div>
+
+        <div class="card glass">
+          <h3>Medical History</h3>
+          <div id="medicalHistory" class="list"></div>
+        </div>
+      </section>
+
+      <section id="view-doctor" class="view">
+        <div class="panel-title">
+          <h2>Doctor Workspace</h2>
+          <p>Manage schedule, patient queues, and clinical decisions efficiently.</p>
+        </div>
+
+        <div class="card glass">
+          <h3>Appointments & Actions</h3>
+          <button id="doctorLoadBtn" class="btn primary">Refresh Schedule</button>
+          <div id="doctorAppointments" class="list"></div>
+        </div>
+
+        <form id="slotForm" class="card glass">
+          <h3>Availability Settings</h3>
+          <input name="slots" placeholder="Comma-separated slots, e.g. 09:00,11:00,15:30" required />
+          <button class="btn primary" type="submit">Update Availability</button>
+        </form>
+      </section>
+
+      <section id="view-notifications" class="view">
+        <div class="panel-title">
+          <h2>Notifications Center</h2>
+          <p>Real-time system updates and alerts.</p>
+        </div>
+        <div id="notificationList" class="list"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,4 +194,5 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
+ main
 </html>
