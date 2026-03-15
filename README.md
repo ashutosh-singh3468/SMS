@@ -75,12 +75,6 @@ Development workflow is managed through JIRA:
 - Team-wise assignment and deadline management
 - Real-time tracking of bugs, enhancements, and progress
 
-## Team Roles
-- **Tejas Upreti:** Team Lead, Admin + Doctor Dashboard developer
-- **Mayank Joshi:** Patient Dashboard developer
-- **Davesh Pandey:** Authentication & Security developer
-- **Megha Karayat:** Database engineer + UI/UX designer
-
 ## Advantages
 - Saves time for patients and hospital staff
 - Reduces manual scheduling errors
